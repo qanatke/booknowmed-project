@@ -30,11 +30,12 @@ public class BasicTest {
 	protected String cityLocation = "valencia";
 	protected String countryLocation = "morocco";
 	
-	protected String title = "Mrs";
-	protected String firstName = "Jane";
+	protected String title = "Mr";
+	protected String firstName = "John";
 	protected String lastName = "Doe";
 	protected String birthDate = "12/03/2012";
-	protected String mail = "natkebatke@gmail.com";
+	protected String mail = "riseh55082@58as.com";
+	protected String takenMail = "natkebatke@gmail.com";
 	protected String pass = "abcd1234";
 	protected String countryCode = "381";
 	protected String phoneNum = "123456789";
