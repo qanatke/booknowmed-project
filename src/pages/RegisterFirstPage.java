@@ -34,6 +34,10 @@ public class RegisterFirstPage extends BasicPage {
 	protected WebElement getEmail() {
 		return this.driver.findElement(By.xpath("//div[4]/label/input"));
 	}
+	
+	public WebElement getEmailValidation() {
+		return this.driver.findElement(By.xpath("//bnm-account-info/div/div[4]/div/bnm-validation"));
+	}
 
 	protected WebElement getPassword() {
 		return this.driver.findElement(By.xpath("//bnm-password/bnm-padded-input/input"));
@@ -82,5 +86,9 @@ public class RegisterFirstPage extends BasicPage {
 
 		js.executeScript("arguments[0].click()", getNextButton());
 	}
-
+	
+	public WebElement getRegistrationValidation() {
+		return this.driver.findElement(By.xpath("//bnm-registration-success/bnm-paper/h1"));
+	}
+	
 }
