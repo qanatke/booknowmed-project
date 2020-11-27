@@ -17,6 +17,18 @@ public class BookForYourselfPage extends BasicPage {
 	protected List<WebElement> getRadioButtons() {
 		return this.driver.findElements(By.xpath("//div/label/bnm-radio"));
 	}
+	
+	protected WebElement getHiv() {
+		return this.driver.findElement(By.xpath("//bnm-booking-yourself/div/div[1]/label/bnm-checkbox"));
+	}
+	
+	protected WebElement getHepatitisB() {
+		return this.driver.findElement(By.xpath("//bnm-booking-yourself/div/div[2]/label/bnm-checkbox"));
+	}
+	
+	protected WebElement getHepatitisC() {
+		return this.driver.findElement(By.xpath("//bnm-booking-yourself/div/div[3]/label/bnm-checkbox"));
+	}
 
 	protected WebElement getHomeClinicNameInput() {
 		return this.driver.findElement(By.xpath("//bnm-booking-yourself/div/div[4]/div[1]/label/input"));
@@ -47,7 +59,7 @@ public class BookForYourselfPage extends BasicPage {
 		return this.driver.findElement(By.xpath("//button[2]"));
 	}
 
-	public void setInfoForYourself(boolean ehic, boolean specRequirements, String homeClinicName, String homeClinicCity,
+	public void setInfoForYourself(boolean ehic, boolean specRequirements, String requirement, String homeClinicName, String homeClinicCity,
 			String countryCode, String clinicNum, boolean mailingList) {
 		if (ehic) {
 			getRadioButtons().get(3).click();
@@ -57,6 +69,20 @@ public class BookForYourselfPage extends BasicPage {
 
 		if (specRequirements) {
 			getRadioButtons().get(5).click();
+			
+			switch (requirement.toLowerCase()) {
+			case "hiv":
+				getHiv().click();
+				break;
+			case "hepatitis b":
+				getHepatitisB().click();
+				break;
+			case "hepatitis c":
+				getHepatitisC().click();
+				break;
+			default:
+				System.out.print("The patient doesn't have special requirements.");
+			}
 		} else {
 			getRadioButtons().get(6).click();
 		}
@@ -70,7 +96,7 @@ public class BookForYourselfPage extends BasicPage {
 			getToMailingList().click();
 		}
 
-		getTerms().click();
+		js.executeScript("arguments[0].click()", getTerms());
 
 		js.executeScript("arguments[0].click()", getRegisterButton());
 
