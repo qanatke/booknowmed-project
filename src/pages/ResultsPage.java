@@ -14,6 +14,10 @@ public class ResultsPage extends BasicPage {
 	public ResultsPage(WebDriver driver, JavascriptExecutor js, WebDriverWait waiter) {
 		super(driver, js, waiter);
 	}
+	
+	public String getPatientName() {
+		return this.driver.findElement(By.xpath("//span[@class='display-name']")).getText();
+	}
 
 	protected List<WebElement> getSearchResults() {
 		return this.driver.findElements(By.xpath("//bnm-search-result-card/bnm-paper/div[2]/div[1]/span"));
