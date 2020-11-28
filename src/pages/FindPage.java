@@ -60,4 +60,9 @@ public class FindPage extends BasicPage {
 		setLocation(location);
 		getButton().click();
 	}
+
+	public WebElement getLoginButton() {
+		return this.driver.findElement(By.xpath(
+				"//section/bnm-header/bnm-header-public/bnm-header-base/div[2]/bnm-header-navigation/nav/ul/li[4]/a"));
+	}
 }

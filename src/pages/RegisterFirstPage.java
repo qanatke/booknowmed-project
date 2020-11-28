@@ -19,35 +19,35 @@ public class RegisterFirstPage extends BasicPage {
 		return this.driver.findElement(By.xpath("//bnm-select/select"));
 	}
 
-	protected WebElement getFirstName() {
+	protected WebElement getFirstNameInput() {
 		return this.driver.findElement(By.xpath("//div[1]/label/input"));
 	}
 
-	protected WebElement getLastName() {
+	protected WebElement getLastNameInput() {
 		return this.driver.findElement(By.xpath("//div[2]/label/input"));
 	}
 
-	protected WebElement getBirthDate() {
+	protected WebElement getBirthDateInput() {
 		return this.driver.findElement(By.xpath("//div[3]/label/input"));
 	}
 
-	protected WebElement getEmail() {
+	protected WebElement getEmailInput() {
 		return this.driver.findElement(By.xpath("//div[4]/label/input"));
 	}
-	
+
 	public WebElement getEmailValidation() {
 		return this.driver.findElement(By.xpath("//bnm-account-info/div/div[4]/div/bnm-validation"));
 	}
 
-	protected WebElement getPassword() {
+	protected WebElement getPasswordInput() {
 		return this.driver.findElement(By.xpath("//bnm-password/bnm-padded-input/input"));
 	}
 
-	protected WebElement getCountryCode() {
+	protected WebElement getCountryCodeInput() {
 		return this.driver.findElement(By.xpath("//bnm-country-code-input/bnm-padded-input/input"));
 	}
 
-	protected WebElement getPhoneNumber() {
+	protected WebElement getPhoneNumberInput() {
 		return this.driver.findElement(By.xpath("//div[6]/div[2]/label/input"));
 	}
 
@@ -64,13 +64,13 @@ public class RegisterFirstPage extends BasicPage {
 		Select select = new Select(getTitle());
 		select.selectByValue(title.toLowerCase());
 
-		getFirstName().sendKeys(firstName);
-		getLastName().sendKeys(lastName);
-		getBirthDate().sendKeys(birthDate);
-		getEmail().sendKeys(mail);
-		getPassword().sendKeys(pass);
-		getCountryCode().sendKeys(countryCode);
-		getPhoneNumber().sendKeys(phoneNum);
+		getFirstNameInput().sendKeys(firstName);
+		getLastNameInput().sendKeys(lastName);
+		getBirthDateInput().sendKeys(birthDate);
+		getEmailInput().sendKeys(mail);
+		getPasswordInput().sendKeys(pass);
+		getCountryCodeInput().sendKeys(countryCode);
+		getPhoneNumberInput().sendKeys(phoneNum);
 
 		switch (forWhom.toLowerCase()) {
 		case "myself":
@@ -86,9 +86,9 @@ public class RegisterFirstPage extends BasicPage {
 
 		js.executeScript("arguments[0].click()", getNextButton());
 	}
-	
+
 	public WebElement getRegistrationValidation() {
 		return this.driver.findElement(By.xpath("//bnm-registration-success/bnm-paper/h1"));
 	}
-	
+
 }

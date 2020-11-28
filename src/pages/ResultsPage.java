@@ -14,10 +14,6 @@ public class ResultsPage extends BasicPage {
 	public ResultsPage(WebDriver driver, JavascriptExecutor js, WebDriverWait waiter) {
 		super(driver, js, waiter);
 	}
-	
-	public String getPatientName() {
-		return this.driver.findElement(By.xpath("//span[@class='display-name']")).getText();
-	}
 
 	protected List<WebElement> getSearchResults() {
 		return this.driver.findElements(By.xpath("//bnm-search-result-card/bnm-paper/div[2]/div[1]/span"));
@@ -25,9 +21,11 @@ public class ResultsPage extends BasicPage {
 
 	public List<String> getDialysisType() {
 		List<String> dialysisFound = new ArrayList<>();
+		
 		for (int i = 0; i < getSearchResults().size(); i++) {
 			dialysisFound.add(getSearchResults().get(i).getText());
 		}
+		
 		return dialysisFound;
 	}
 
@@ -37,9 +35,11 @@ public class ResultsPage extends BasicPage {
 
 	public List<String> getDialysisAddress() {
 		List<String> addressFound = new ArrayList<>();
+		
 		for (int i = 0; i < getAddressResults().size(); i++) {
 			addressFound.add(getAddressResults().get(i).getText());
 		}
+		
 		return addressFound;
 	}
 
