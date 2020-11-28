@@ -8,8 +8,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import pages.FindPage;
+import pages.HeaderNavigationPage;
 import pages.LoginPage;
-import pages.ResultsPage;
 
 public class LoginTest extends BasicTest {
 
@@ -17,8 +18,9 @@ public class LoginTest extends BasicTest {
 	public void loginTest() throws Exception {
 
 		LoginPage loginPage = new LoginPage(this.driver, this.js, this.waiter);
-		ResultsPage resultsPage = new ResultsPage(this.driver, this.js, this.waiter);
-		SoftAssert ss = new SoftAssert();
+		HeaderNavigationPage headerPage = new HeaderNavigationPage(this.driver, this.js, this.waiter);
+		FindPage homePage = new FindPage(this.driver, this.js, this.waiter);
+		SoftAssert softAssert = new SoftAssert();
 
 		File loginData = new File("data/data.xlsx");
 		FileInputStream fis = new FileInputStream(loginData);
@@ -42,18 +44,25 @@ public class LoginTest extends BasicTest {
 				Thread.sleep(2000);
 
 				String expectedName = sheet.getRow(i).getCell(0).getStringCellValue();
-				String displayName = resultsPage.getPatientName();
+				String displayName = headerPage.getPatientName();
 
-				ss.assertEquals(displayName, expectedName);
+				softAssert.assertEquals(displayName, expectedName);
+
+				headerPage.logout();
+
+				softAssert.assertEquals(homePage.getLoginButton().getText(), "Log in");
 			} else {
 				String actualString = loginPage.getVerificationMsg().getText();
-				ss.assertTrue(actualString.contains("You are trying to log in with an email that hasn't been verified."));
+				softAssert.assertTrue(
+						actualString.contains("You are trying to log in with an email that hasn't been verified."));
 			}
 
-			ss.assertAll();
+			softAssert.assertAll();
 
 		}
 
+		wb.close();
+		fis.close();
 	}
 
 }

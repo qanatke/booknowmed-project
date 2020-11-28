@@ -1,7 +1,6 @@
 package tests;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +28,7 @@ public class BasicTest {
 	protected String hdf = "Dialysis HDF";
 	protected String cityLocation = "valencia";
 	protected String countryLocation = "morocco";
-	
+
 	protected String title = "Mr";
 	protected String firstName = "John";
 	protected String lastName = "Doe";
@@ -42,7 +41,7 @@ public class BasicTest {
 	protected String forMyself = "Myself";
 	protected String forSOelse = "Someone else";
 	protected String forBoth = "Both";
-	
+
 	protected String homeClinicName = "Radon";
 	protected String homeClinicCity = "Niska Banja";
 	protected String clinicNum = "987654321";
@@ -69,9 +68,9 @@ public class BasicTest {
 		}
 	}
 
-//	@AfterClass
-//	public void afterClass() {
-//		this.driver.quit();
-//	}
+	@AfterClass
+	public void afterClass() {
+		this.driver.quit();
+	}
 
 }
